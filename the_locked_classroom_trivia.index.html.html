@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Locked Classroom | Trivia</title>
+<style>
+:root{--bg:#10121d;--panel:#191d2c;--panel2:#22283a;--cream:#f5eedf;--muted:#b8bfd0;--gold:#f0d28b;--lav:#bca8f4;--green:#8cdbb2;--red:#ff9d9d}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#25233c 0%,var(--bg) 58%);color:var(--cream);font:16px/1.55 system-ui,-apple-system,Segoe UI,sans-serif;min-height:100vh}
+main{width:min(780px,100%);margin:auto;padding:24px 18px 48px}.eyebrow{letter-spacing:.18em;text-transform:uppercase;font-size:.72rem;color:var(--gold);font-weight:800}
+header{padding:25px 0 20px}h1{font-size:clamp(2.4rem,8vw,4.6rem);line-height:.98;letter-spacing:-.055em;margin:12px 0 16px}h1 span{color:var(--gold)}.intro{color:var(--muted);max-width:600px;font-size:1.05rem}
+.panel{background:rgba(25,29,44,.94);border:1px solid #ffffff1b;border-radius:22px;padding:clamp(18px,4vw,30px);box-shadow:0 18px 60px #0002}
+.row{display:flex;justify-content:space-between;align-items:center;gap:12px}.pill{border:1px solid #ffffff24;border-radius:99px;padding:6px 11px;color:var(--muted);font-size:.8rem}.progress{height:6px;background:#ffffff14;border-radius:9px;overflow:hidden;margin:18px 0 25px}.bar{height:100%;width:0;background:var(--gold);transition:width .25s}
+h2{font-size:clamp(1.3rem,4vw,1.8rem);line-height:1.25;margin:12px 0 20px}.options{display:grid;gap:10px}.option{width:100%;text-align:left;border:1px solid #ffffff26;background:var(--panel2);color:var(--cream);padding:14px 16px;border-radius:14px;font:inherit;cursor:pointer;transition:.15s}.option:hover:not(:disabled){border-color:var(--lav);transform:translateY(-1px)}.option:focus-visible,button:focus-visible{outline:3px solid var(--gold);outline-offset:3px}.option.correct{border-color:var(--green);background:#19382f}.option.wrong{border-color:var(--red);background:#3b252f}.feedback{margin-top:16px;padding:15px;border-radius:14px;background:#ffffff09;color:var(--muted)}.feedback strong{color:var(--cream)}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}button.primary,button.secondary{border:0;border-radius:99px;padding:12px 18px;font:inherit;font-weight:750;cursor:pointer}.primary{background:var(--gold);color:#171722}.secondary{background:#ffffff12;color:var(--cream);border:1px solid #ffffff25!important}.hidden{display:none}.score{font-size:3rem;font-weight:850;color:var(--gold);line-height:1.1}.small{font-size:.85rem;color:var(--muted)}.sources{margin-top:20px;color:var(--muted);font-size:.86rem}.sources a{color:var(--lav)}footer{padding-top:22px;text-align:center;color:#9299ad;font-size:.8rem}.tag{color:var(--lav);font-size:.8rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em}.divider{border:0;border-top:1px solid #ffffff18;margin:22px 0}
+</style>
+</head>
+<body><main>
+<header>
+<div class="eyebrow">Una experiencia interactiva · Afganistán y derechos humanos</div>
+<h1>THE LOCKED<br><span>CLASSROOM</span></h1>
+<p class="intro">¿Qué tan libre es aprender? Responde cinco preguntas, descubre qué hay detrás de los datos y recuerda: los derechos no son puntos de un videojuego.</p>
+</header>
+<section class="panel" id="quiz">
+<div class="row"><span class="tag" id="category">Misión 01</span><span class="pill" id="count">Pregunta 1 de 5</span></div>
+<div class="progress"><div class="bar" id="bar"></div></div>
+<h2 id="question"></h2>
+<div class="options" id="options"></div>
+<div class="feedback hidden" id="feedback" aria-live="polite"></div>
+<div class="actions"><button class="primary hidden" id="next">Siguiente pregunta →</button></div>
+</section>
+<section class="panel hidden" id="result">
+<div class="eyebrow">Misión completada</div><h2 id="resultTitle">Gracias por participar.</h2>
+<div class="score" id="score"></div><p id="resultText"></p>
+<hr class="divider">
+<p><strong>Antes de cerrar:</strong> la situación de Afganistán no es un juego. Las restricciones educativas afectan oportunidades reales, y las mujeres afganas tienen voces y experiencias diversas.</p>
+<p>Infórmate, contrasta las fuentes y apoya iniciativas serias que defiendan el derecho a la educación.</p>
+<div class="actions"><button class="primary" id="restart">Volver a jugar ↻</button></div>
+</section>
+<div class="sources"><strong>Fuentes para profundizar</strong><br>
+UNESCO, <a href="https://www.unesco.org/en/heratlas" target="_blank" rel="noopener">HerAtlas: indicadores legales sobre educación e igualdad de género</a>.<br>
+UNICEF, <a href="https://www.unicef.org/afghanistan/" target="_blank" rel="noopener">información sobre la infancia en Afganistán</a>.<br>
+<a href="https://www.unesco.org/es/articles/datos-clave-sobre-el-derecho-la-educacion-de-las-ninas-y-las-mujeres" target="_blank" rel="noopener">UNESCO en español: datos clave sobre el derecho a la educación</a>.
+</div>
+<footer>THE LOCKED CLASSROOM · La educación no es una recompensa. Es un derecho.</footer>
+</main>
+<script>
+const questions=[
+{q:"¿Desde qué año están excluidas las niñas de la educación secundaria superior en Afganistán?",opts:["2015","2021","2024"],a:1,why:"Desde que los talibanes retomaron el poder en 2021, las niñas han sido excluidas de la educación secundaria más allá de sexto grado."},
+{q:"¿Qué ocurrió con el acceso de las mujeres a las universidades afganas?",opts:["Se mantuvo sin restricciones","Se prohibió a las mujeres asistir","Solo se cerraron durante las vacaciones"],a:1,why:"En diciembre de 2022, las autoridades talibanes prohibieron a las mujeres asistir a las universidades."},
+{q:"¿Cuántos indicadores legales relacionados con la igualdad de género en la educación monitorea HerAtlas, de la UNESCO?",opts:["5","12","50"],a:1,why:"HerAtlas examina 12 indicadores legales, como garantías de educación sin discriminación, acceso a educación superior y protección contra la violencia."},
+{q:"¿Todas las mujeres afganas tienen las mismas experiencias y opiniones?",opts:["Sí, todas piensan igual","No, son personas diversas con voces propias","No podemos escuchar sus perspectivas"],a:1,why:"Las mujeres afganas no son un grupo con una sola voz. Sus experiencias y opiniones son diversas, y muchas siguen buscando maneras de aprender, trabajar y defender sus derechos."},
+{q:"¿Qué podemos hacer desde nuestro colegio de manera responsable?",opts:["Compartir cualquier noticia sin comprobarla","Informarnos con fuentes fiables y apoyar iniciativas serias","Pensar que, como ocurre lejos, no importa"],a:1,why:"Verificar la información, escuchar a las personas afectadas y dar visibilidad responsable a organizaciones confiables son acciones concretas."}
+];
+let current=0,score=0,answered=false;
+const $=id=>document.getElementById(id);
+function render(){answered=false;const q=questions[current];$('category').textContent=`Misión ${String(current+1).padStart(2,'0')}`;$('count').textContent=`Pregunta ${current+1} de ${questions.length}`;$('bar').style.width=`${current/questions.length*100}%`;$('question').textContent=q.q;$('options').innerHTML='';$('feedback').classList.add('hidden');$('next').classList.add('hidden');q.opts.forEach((o,i)=>{const b=document.createElement('button');b.className='option';b.textContent=String.fromCharCode(65+i)+'. '+o;b.onclick=()=>choose(i,b);$('options').appendChild(b)});}
+function choose(i,button){if(answered)return;answered=true;const q=questions[current];[...$('options').children].forEach((b,j)=>{b.disabled=true;if(j===q.a)b.classList.add('correct')});if(i===q.a)score++;else button.classList.add('wrong');$('feedback').classList.remove('hidden');$('feedback').innerHTML=`<strong>${i===q.a?'¡Correcto!':'La respuesta correcta es: '+q.opts[q.a]}</strong><br>${q.why}`;$('bar').style.width=`${(current+1)/questions.length*100}%`;$('next').classList.remove('hidden');$('next').textContent=current===questions.length-1?'Ver resultado →':'Siguiente pregunta →';}
+$('next').onclick=()=>{if(current<questions.length-1){current++;render()}else showResult()};
+function showResult(){$('quiz').classList.add('hidden');$('result').classList.remove('hidden');$('score').textContent=`${score} / ${questions.length}`;$('resultTitle').textContent=score===5?'¡Misión perfecta!':score>=3?'¡Buen trabajo! Sigue aprendiendo.':'Cada respuesta es una oportunidad para aprender.';$('resultText').textContent=`Acertaste ${score} de ${questions.length}. Lo importante no es la puntuación, sino lo que te llevas de esta experiencia.`}
+function restart(){current=0;score=0;$('result').classList.add('hidden');$('quiz').classList.remove('hidden');render()}
+$('restart').onclick=restart;render();
+</script></body></html>
